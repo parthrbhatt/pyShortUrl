@@ -14,9 +14,9 @@ setup(
     author_email = "parthrbhatt@gmail.com",
     description = ("A python library to shorten urls using one of the url shortening services"),
     license = "BSD",
-    keywords = "url shortening using goo.gl",
-    #url = "",
-    packages=['ShortUrl'],
+    keywords = "url shortening qrcode qr goo.gl bit.ly tinyurl.com j.mp bitly.com v.gd is.gd",
+    url = "https://github.com/parthrbhatt/pyShortUrl",
+    packages=['pyshorturl', 'pyshorturl/ShortUrl'],
     long_description=read('README.rst'),
     classifiers=[
         "Development Status :: 3 - Alpha",

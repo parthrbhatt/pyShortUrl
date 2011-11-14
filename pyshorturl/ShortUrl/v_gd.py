@@ -1,16 +1,16 @@
 
 import json
 from urllib import urlencode
-from base_shortner import BaseShortner, ShortnerServiceError
+from base_shortener import BaseShortener, ShortenerServiceError
 
 VGD_SERVICE_URL = "http://v.gd/%s.php"
 
-class VgdError(ShortnerServiceError):
+class VgdError(ShortenerServiceError):
     pass
 
-class Vgd(BaseShortner):
+class Vgd(BaseShortener):
     def __init__(self):
-        BaseShortner.__init__(self, api_key=None)
+        BaseShortener.__init__(self, api_key=None)
         self.default_request_params = {
             'format': 'json',
         }

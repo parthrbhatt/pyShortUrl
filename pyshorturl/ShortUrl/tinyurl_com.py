@@ -1,17 +1,17 @@
 
 import urllib2
 from urllib import urlencode
-from base_shortner import BaseShortner, ShortnerServiceError
+from base_shortener import BaseShortener, ShortenerServiceError
 
 TINYURLCOM_SERVICE_URL = "http://tinyurl.com/api-create.php"
 
-class TinyUrlcomError(ShortnerServiceError):
+class TinyUrlcomError(ShortenerServiceError):
     pass
 
-class TinyUrlcom(BaseShortner):
+class TinyUrlcom(BaseShortener):
 
     def __init__(self):
-        BaseShortner.__init__(self, api_key=None)
+        BaseShortener.__init__(self, api_key=None)
 
     def _get_request_url(self):
         return TINYURLCOM_SERVICE_URL

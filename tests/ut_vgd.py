@@ -5,7 +5,10 @@ import sys
 import unittest
 import imghdr
 
-from ShortUrl.v_gd import Vgd
+lib_path = os.path.abspath(os.path.join(os.getcwd(), '../'))
+sys.path.append(lib_path)
+
+from pyshorturl import Vgd
 
 class TestVgd(unittest.TestCase):
 
@@ -27,5 +30,5 @@ class TestVgd(unittest.TestCase):
 
 
 if '__main__' == __name__:
-    suite = unittest.TestLoader().loadTestsFromTestCase(TestVgdAndIsgd)
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestVgd)
     unittest.TextTestRunner(verbosity=2).run(suite)

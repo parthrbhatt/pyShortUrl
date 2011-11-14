@@ -4,7 +4,10 @@ import os
 import sys
 import unittest
 
-from ShortUrl.goo_gl import Googl
+lib_path = os.path.abspath(os.path.join(os.getcwd(), '../'))
+sys.path.append(lib_path)
+
+from pyshorturl import Googl
 
 class TestGoogl(unittest.TestCase):
 

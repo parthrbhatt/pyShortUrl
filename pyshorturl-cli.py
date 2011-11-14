@@ -4,13 +4,8 @@ import os
 import sys
 
 try:
-    from ShortUrl.base_shortner import ShortnerServiceError
-    from ShortUrl.goo_gl import Googl
-    from ShortUrl.bit_ly import Bitly
-    from ShortUrl.tinyurl_com import TinyUrlcom
-    from ShortUrl.v_gd import Vgd
-    from ShortUrl.is_gd import Isgd
-    from ShortUrl.conf import SUPPORTED_SERVICES
+    from pyshorturl import Bitly, BitlyV2, Googl, Isgd, Vgd, TinyUrlcom, ShortenerServiceError
+    from pyshorturl import SUPPORTED_SERVICES
 except ImportError:
     print 'pyShortUrl is not installed.'
     sys.exit(-1)
@@ -78,7 +73,7 @@ if '__main__' == __name__:
 
         try:
             service.write_qr_image(options.short_url, options.qr_img_path)
-        except ShortnerServiceError, e:
+        except ShortenerServiceError, e:
             print e
 
         if os.path.exists(options.qr_img_path):
@@ -93,7 +88,7 @@ if '__main__' == __name__:
             else:
                 short_url = service.shorten_url(options.long_url)
             print short_url
-        except ShortnerServiceError, e:
+        except ShortenerServiceError, e:
             print e
         sys.exit(0)
 
@@ -102,7 +97,7 @@ if '__main__' == __name__:
         try:
             long_url = service.expand_url(options.short_url)
             print long_url
-        except ShortnerServiceError, e:
+        except ShortenerServiceError, e:
             print e
         sys.exit(0)
 

@@ -5,8 +5,10 @@ import sys
 import unittest
 import imghdr
 
-from ShortUrl.bit_ly_v2 import Bitly as BitlyV2
-from ShortUrl.bit_ly import Bitly
+lib_path = os.path.abspath(os.path.join(os.getcwd(), '../'))
+sys.path.append(lib_path)
+
+from pyshorturl import Bitly, BitlyV2
 
 class TestBitly(unittest.TestCase):
 

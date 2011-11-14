@@ -5,7 +5,10 @@ import sys
 import unittest
 import imghdr
 
-from ShortUrl.is_gd import Isgd
+lib_path = os.path.abspath(os.path.join(os.getcwd(), '../'))
+sys.path.append(lib_path)
+
+from pyshorturl import Isgd
 
 class TestIsgd(unittest.TestCase):
 

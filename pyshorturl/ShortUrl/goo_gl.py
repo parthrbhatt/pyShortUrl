@@ -1,15 +1,15 @@
 
 import json
-from base_shortner import BaseShortner, ShortnerServiceError
+from base_shortener import BaseShortener, ShortenerServiceError
 
 GOOGL_SERVICE_URL = 'https://www.googleapis.com/urlshortener/v1/url'
 
-class GooglError(ShortnerServiceError):
+class GooglError(ShortenerServiceError):
     pass
 
-class Googl(BaseShortner):
+class Googl(BaseShortener):
     def __init__(self, api_key=None):
-        BaseShortner.__init__(self, api_key)
+        BaseShortener.__init__(self, api_key)
         # goo.gl mandates that requests containing JSON content bodies must be
         # accompanied by a "Content-Type: application/json" request header.
         # Otherwise, the request will result in an Error (400: Bad Request).

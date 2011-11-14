@@ -1,18 +1,18 @@
 
 import json
 from urllib import urlencode
-from base_shortner import BaseShortner, ShortnerServiceError
+from base_shortener import BaseShortener, ShortenerServiceError
 
 BITLY_API_VERSION = '2.0.1'
 BITLY_SERVICE_URL = 'http://api.bit.ly/'
 
-class BitlyError(ShortnerServiceError):
+class BitlyError(ShortenerServiceError):
     pass
 
-class Bitly(BaseShortner):
+class Bitly(BaseShortener):
 
     def __init__(self, login, api_key):
-        BaseShortner.__init__(self, api_key)
+        BaseShortener.__init__(self, api_key)
         self.login = login
         self.default_request_params = {
                   'version': BITLY_API_VERSION,

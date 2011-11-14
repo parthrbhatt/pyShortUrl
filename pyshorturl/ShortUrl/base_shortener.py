@@ -2,11 +2,11 @@
 import conf
 import urllib2
 
-class ShortnerServiceError(Exception):
+class ShortenerServiceError(Exception):
     pass
 
-class BaseShortner:
-    """Base class for the url shortners in the lib"""
+class BaseShortener:
+    """Base class for the url shorteners in the lib"""
 
     def __init__(self, api_key):
         self.headers = {
@@ -25,9 +25,9 @@ class BaseShortner:
             response = connection.read()
             return response
         except urllib2.HTTPError, e:
-            raise ShortnerServiceError('%s:%s' %(e.code, e.msg))
+            raise ShortenerServiceError('%s:%s' %(e.code, e.msg))
         except urllib2.URLError, e:
-            raise ShortnerServiceError('%s' %(e.reason))
+            raise ShortenerServiceError('%s' %(e.reason))
 
     def set_api_key(self, api_key):
         self.api_key = api_key
@@ -56,7 +56,7 @@ class BaseShortner:
             Returns raw png image data that constitutes the qr code image.
 
         Exceptions:
-            `ShortnerServiceError` - In case of error
+            `ShortenerServiceError` - In case of error
         """
         image_data = self.get_qr_code(short_url)
 

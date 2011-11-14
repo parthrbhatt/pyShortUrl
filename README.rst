@@ -57,7 +57,7 @@ Shorten a URL using goo.gl:
 
 ::
 
-    from ShortUrl.goo_gl import Googl, GooglError
+    from pyshorturl import Googl, GooglError
 
     long_url = 'http://www.parthbhatt.com/blog/'
     service = Googl()
@@ -72,7 +72,7 @@ Expand a goo.gl short url back to the original long url:
 
 ::
 
-    from ShortUrl.goo_gl import Googl, GooglError
+    from pyshorturl import Googl, GooglError
 
     short_url = 'http://goo.gl/RwsEG'
     service = Googl()
@@ -99,7 +99,7 @@ Get QR code for a goo.gl short url:
 
 ::
 
-    from ShortUrl.goo_gl import Googl, GooglError
+    from pyshorturl import Googl, GooglError
 
     short_url = 'http://goo.gl/RwsEG'
     qr_img_path = '/path/to/qr_code.png'
@@ -118,7 +118,7 @@ object in the snippets above using *Bitly* instead of *Googl*.
 
 ::
 
-    from ShortUrl.bit_ly import Bitly, BitlyError
+    from pyshorturl import Bitly, BitlyError
 
     service = Bitly(<your_bit.ly_login>, <your_bit.ly_api_key>)
 
@@ -133,7 +133,7 @@ to the `shorten` function call as shown below:
 
 ::
 
-    from ShortUrl.bit_ly import Bitly, BitlyError
+    from pyshorturl import Bitly, BitlyError
 
     long_url = 'http://www.parthbhatt.com/blog/'
     service = Bitly(<your_bit.ly_login>, <your_bit.ly_api_key>)
@@ -148,7 +148,7 @@ Using pyShortUrl for URL shortening with *tinyurl.com*
 
 ::
 
-    from ShortUrl.tinyurl_com import TinyUrlcom
+    from pyshorturl import TinyUrlcom
     
     service = TinyUrlcom()
 
