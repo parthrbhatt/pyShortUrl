@@ -1,23 +1,11 @@
-""" Install script for pyShortUrl
-"""
+
+""" Install script for pyShortUrl """
+
 import os
 from setuptools import setup
 
 def read(fname):
     return open(os.path.join(os.path.dirname(__file__), fname)).read()
-
-"""
-pyShortUrl Source Tree:
-
-    pyShortURL/
-    |-- README.rst
-    |-- setup.py
-    |-- ShortUrl
-    |   |-- __init__.py
-    |   |-- base_shortner.py
-    |   |-- conf.py
-    |   |-- goo_gl.py
-"""
 
 setup(
     name = "pyShortUrl",
