@@ -86,6 +86,3 @@ Some examples of using the pyshorturl-cli.py utility:
     Wrote the qr code for http://goo.gl/NMdyG to qr_code.png
 
 
-Unit tests
-==========
-
