@@ -9,8 +9,9 @@ from ShortUrl.goo_gl import Googl
 class TestGoogl(unittest.TestCase):
 
     def setUp(self):
-        self.test_long_url = 'http://www.google.com'
-        self.test_short_url = 'http://goo.gl/fbsS'
+        self.test_long_url = 'http://www.parthbhatt.com/blog/'
+        self.test_short_url = 'http://goo.gl/RwsEG'
+        self.api_key = 'AIzaSyC0KUGJe63CkvuG7jQfXV5PgI9U-x2IdAI'
         self.qr_image_path = 'qr.png'
 
     def tearDown(self):
@@ -18,7 +19,7 @@ class TestGoogl(unittest.TestCase):
             os.unlink(self.qr_image_path)
 
     def test_shorten_url_with_key(self):
-        service = Googl(api_key='AIzaSyC0KUGJe63CkvuG7jQfXV5PgI9U-x2IdAI')
+        service = Googl(api_key=self.api_key)
         generated_short_url = service.shorten_url(self.test_long_url)
 
         self.assertEqual(self.test_short_url, generated_short_url)
@@ -34,6 +35,18 @@ class TestGoogl(unittest.TestCase):
         service.write_qr_image(self.test_short_url, self.qr_image_path)
 
         self.assertEqual('png', imghdr.what(self.qr_image_path))
+
+    def test_expand_url_with_key(self):
+        service = Googl(api_key=self.api_key)
+        generated_long_url = service.expand_url(self.test_short_url)
+
+        self.assertEqual(self.test_long_url, generated_long_url)
+
+    def test_expand_url_without_key(self):
+        service = Googl()
+        generated_long_url = service.expand_url(self.test_short_url)
+
+        self.assertEqual(self.test_long_url, generated_long_url)
 
 
 if '__main__' == __name__:
