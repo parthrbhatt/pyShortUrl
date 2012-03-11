@@ -71,11 +71,6 @@ class Bitly(BaseShortner):
         return response
 
     def get_short_url_info(self, short_url):
-        """ 
-        Given a bit.ly url or hash, 
-        return information about that page, 
-        such as the long source url
-        """
         request_url = self._get_request_url('info', 'shortUrl', short_url)
         response = self._do_http_request(request_url)
 
@@ -99,12 +94,3 @@ class Bitly(BaseShortner):
         results_dict = response.get('results')
         return results_dict
 
-
-
-if '__main__' == __name__:
-    login = 'parthrbhatt'
-    api_key = 'R_0938930c0e3f357efce18f2cdaf53f60'
-    long_url = 'http://www.google.com'
-
-    bitly = Bitly(login, api_key)
-    print bitly.shorten_url(long_url)
