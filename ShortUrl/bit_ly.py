@@ -9,14 +9,6 @@ import conf
 BITLY_SERVICE_URL = 'http://api.bit.ly/'
 BITLY_API_VERSION = '2.0.1'
 
-VERBS_PARAM = {
-         'shorten':'longUrl',
-         'expand':'shortUrl',
-         'info':'shortUrl',
-         'stats':'shortUrl',
-         'errors':'',
-}
-
 class BitlyError(ShortnerServiceError):
     pass
 
@@ -32,31 +24,23 @@ class Bitly(BaseShortner):
                   'apiKey': self.api_key,
             }
 
-    def _get_request_url(self, verb, param, more_params={}):
-        if not isinstance(param, list):
-            param = [param]
-
+    def _get_request_url(self, action, param_key, param_value):
         request_params = self.default_request_params
-        request_params.update(more_params)
+        request_params[param_key] = param_value
         request_params = request_params.items()
 
-        verbParam = VERBS_PARAM[verb]
-        if verbParam:
-            for val in param:
-                request_params.append(( verbParam,val ))
-
         encoded_params = urlencode(request_params)
-        return "%s%s?%s" % (BITLY_SERVICE_URL,verb,encoded_params)
+        return "%s%s?%s" % (BITLY_SERVICE_URL, action, encoded_params)
 
     def _is_response_success(self, response):
         return ('OK' == response.get('statusCode'))
 
     def _get_error_from_response(self, response):
-        # Fix Me: extract error from response dict.
+        # FixMe: Extract error from response dict received from bit.ly
         return 'Invalid Response'
 
     def shorten_url(self, long_url):
-        request_url = self._get_request_url('shorten', long_url)
+        request_url = self._get_request_url('shorten', 'longUrl', long_url)
         response = self._do_http_request(request_url)
 
         response = json.loads(response)
@@ -69,7 +53,7 @@ class Bitly(BaseShortner):
         return result.get('shortUrl')
 
     def expand_url(self, short_url):
-        request_url = self._get_request_url('expand', short_url)
+        request_url = self._get_request_url('expand', 'shortUrl', short_url)
         response = self._do_http_request(request_url)
 
         response = json.loads(response)
@@ -92,7 +76,7 @@ class Bitly(BaseShortner):
         return information about that page, 
         such as the long source url
         """
-        request_url = self._get_request_url('info', short_url)
+        request_url = self._get_request_url('info', 'shortUrl', short_url)
         response = self._do_http_request(request_url)
 
         response = json.loads(response)
@@ -104,7 +88,7 @@ class Bitly(BaseShortner):
         return results_dict.values()[0]
 
     def get_stats(self, short_url):
-        request_url = self._get_request_url('stats', short_url)
+        request_url = self._get_request_url('stats', 'shortUrl', short_url)
         response = self._do_http_request(request_url)
 
         response = json.loads(response)
