@@ -2,12 +2,12 @@
 import json
 import urllib2
 
-from base_shortner import BaseShortner
+from base_shortner import BaseShortner, ShortnerServiceError
 import conf
 
 GOOGL_SERVICE_URL = 'https://www.googleapis.com/urlshortener/v1/url'
 
-class GooglError(Exception):
+class GooglError(ShortnerServiceError):
     pass
 
 class Googl(BaseShortner):
@@ -29,21 +29,6 @@ class Googl(BaseShortner):
             request_url = request_url + '?' + params
 
         return request_url
-
-    def _do_http_request(self, request_url, data=None):
-        if data:
-            request = urllib2.Request(request_url, data=data, headers=self.headers)
-        else:
-            request = urllib2.Request(request_url, headers=self.headers)
-
-        try:
-            connection = urllib2.urlopen(request)
-            response = connection.read()
-            return response
-        except urllib2.HTTPError, e:
-            raise GooglError('Unable to obtain QR code for %s. %s:%s' %(long_url, e.code, e.msg))
-        except urllib2.URLError, e:
-            raise GooglError('Unable to obtain QR code for %s. %s' %(long_url, e.reason))
 
     def shorten_url(self, long_url):
         data = """{"longUrl": "%s"}""" %long_url

@@ -1,5 +1,9 @@
 
 import conf
+import urllib2
+
+class ShortnerServiceError(Exception):
+    pass
 
 class BaseShortner:
     """Base class for the url shortners in the lib"""
@@ -11,6 +15,21 @@ class BaseShortner:
         self.headers = {'Content-Type': 'application/json',
             'User-Agent': conf.USER_AGENT_STRING}
         self.api_key = api_key
+
+    def _do_http_request(self, request_url, data=None):
+        if data:
+            request = urllib2.Request(request_url, data=data, headers=self.headers)
+        else:
+            request = urllib2.Request(request_url, headers=self.headers)
+
+        try:
+            connection = urllib2.urlopen(request)
+            response = connection.read()
+            return response
+        except urllib2.HTTPError, e:
+            raise ShortnerServiceError('%s:%s' %(e.code, e.msg))
+        except urllib2.URLError, e:
+            raise ShortnerServiceError('%s' %(e.reason))
 
     def set_api_key(self, api_key):
         self.api_key = api_key
@@ -38,9 +57,7 @@ class BaseShortner:
             Returns raw png image data that constitutes the qr code image.
 
         Exceptions:
-            This method will raise service specific exceptions. For eg. `GooglError`
-            will be raised in case of goo.gl
-
+            `ShortnerServiceError` - In case of error
         """
         image_data = self.get_qr_code(short_url)
 
