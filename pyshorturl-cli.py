@@ -7,6 +7,7 @@ try:
     from ShortUrl.base_shortner import ShortnerServiceError
     from ShortUrl.goo_gl import Googl
     from ShortUrl.bit_ly import Bitly
+    from ShortUrl.tinyurl_com import TinyUrlcom
     from ShortUrl.conf import SUPPORTED_SERVICES
 except ImportError:
     print 'pyShortUrl is not installed.'
@@ -56,6 +57,8 @@ if '__main__' == __name__:
             print 'bit.ly requires a valid account and API key.'
             sys.exit(-1)
         service = Bitly(options.login, options.svc_api_key)
+    elif 'tinyurl.com' == options.service:
+        service = TinyUrlcom()
 
     # Get QR code.
     if options.qr_img_path:
@@ -70,7 +73,7 @@ if '__main__' == __name__:
             print e
 
         if os.path.exists(options.qr_img_path):
-            print 'Wrote the qr code for %s to %s' %(options.short_url, options.qr_img_path)
+            print 'Wrote the QR code for %s to %s' %(options.short_url, options.qr_img_path)
         sys.exit(0)
 
     # Shorten a URL.

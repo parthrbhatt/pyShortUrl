@@ -4,7 +4,6 @@ from urllib import urlencode
 import urllib2
 
 from base_shortner import BaseShortner, ShortnerServiceError
-import conf
 
 BITLY_SERVICE_URL = 'http://api.bit.ly/'
 BITLY_API_VERSION = '2.0.1'
@@ -36,8 +35,16 @@ class Bitly(BaseShortner):
         return ('OK' == response.get('statusCode'))
 
     def _get_error_from_response(self, response):
-        # FixMe: Extract error from response dict received from bit.ly
-        return 'Invalid Response'
+        error_code = response.get('errorCode')
+        error_message = response.get('errorMessage')
+
+        error = 'Invalid Response. '
+        if error_code:
+            error = '%s: ' %error_code
+        if error_message:
+            error += error_message
+
+        return error
 
     def shorten_url(self, long_url):
         request_url = self._get_request_url('shorten', 'longUrl', long_url)

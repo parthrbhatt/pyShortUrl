@@ -9,11 +9,9 @@ class BaseShortner:
     """Base class for the url shortners in the lib"""
 
     def __init__(self, api_key):
-        # goo.gl mandates that requests containing JSON content bodies must be
-        # accompanied by a "Content-Type: application/json" request header.
-        # Otherwise, the request will result in an Error (400: Bad Request).
-        self.headers = {'Content-Type': 'application/json',
-            'User-Agent': conf.USER_AGENT_STRING}
+        self.headers = {
+            'User-Agent': conf.USER_AGENT_STRING
+        }
         self.api_key = api_key
 
     def _do_http_request(self, request_url, data=None):
@@ -38,7 +36,8 @@ class BaseShortner:
         raise NotImplementedError()
 
     def expand_url(self, short_url):
-        raise NotImplementedError()
+        response = urllib2.urlopen(short_url)
+        return response.url
 
     def get_qr_code(self, short_url):
         raise NotImplementedError()

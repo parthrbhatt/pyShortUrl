@@ -3,10 +3,26 @@
 pyShortUrl
 ===========
 
-A python library to shorten urls using one of the url shortening services.
+A python library to shorten urls using one of the supported url shortening
+services.
 
-pyShortUrl currently supports shortening urls using Google's URL shortening
-service goo.gl and bit.ly. Future releases will add support for tinyurl.com
+pyShortUrl currently supports shortening urls using:
+  - goo.gl (Google's URL shortening service)
+  - bit.ly
+  - tinyurl.com
+
+Following table explains what features are supported for which services:
+
+  +--------------+----------------------+-----------+-------------+
+  | Service      |  Shorten/Expand URL  |  QR code  | Statestics  |
+  +--------------+----------------------+-----------+-------------+
+  | goo.gl       |        YES           |   YES     |    NO       |
+  +--------------+----------------------+-----------+-------------+
+  | bit.ly       |        YES           |   YES     |    NO       |
+  +--------------+----------------------+-----------+-------------+
+  | tinyurl.com  |        YES           |   NO      |    NO       |
+  +--------------+----------------------+-----------+-------------+
+
 
 Install
 =======
@@ -102,6 +118,17 @@ does not. It is mandatory to associate every call to bit.ly with a valid
 account and an API Key. Hence, to use URL shortening with bit.ly you will need
 to provide an account name and API key.
 
+Using pyShortUrl for URL shortening with *tinyurl.com*
+------------------------------------------------------
+
+::
+
+    from ShortUrl.tinyurl_com import TinyUrlcom
+    
+    service = TinyUrlcom()
+
+You dont need any account name or api key to use TinyUrl.
+
 
 Using the pyshorturl-cli.py utility
 ===================================
@@ -187,3 +214,17 @@ Get the QR code for a bit.ly short url:
     $ python pyshorturl-cli.py --service bit.ly --login <your_bit.ly_account> --api-key <your_bit.ly_api_key> --short-url http://bit.ly/xJHGkJ --qr-code-file qr_code.png
     Wrote the qr code for http://bit.ly/xJHGkJ to qr_code.png
 
+
+Shorten a long url using tinyurl.com:
+
+::
+
+    $ python pyshorturl-cli.py --service tinyurl.com --long-url http://www.parthbhatt.com/blog/
+    http://tinyurl.com/8yuvzl5
+
+Obtain the original long url for a tinyurl.com short url:
+
+::
+
+    $ python pyshorturl-cli.py --service tinyurl.com --short-url http://tinyurl.com/8yuvzl5
+    http://www.parthbhatt.com/blog/
