@@ -6,7 +6,7 @@ import sys
 try:
     from ShortUrl.base_shortner import ShortnerServiceError
     from ShortUrl.goo_gl import Googl
-    from ShortUrl.bit_ly import Bitly
+    from ShortUrl.bit_ly_v2 import Bitly
     from ShortUrl.tinyurl_com import TinyUrlcom
     from ShortUrl.conf import SUPPORTED_SERVICES
 except ImportError:

@@ -4,7 +4,7 @@ import os
 import sys
 import unittest
 
-from ShortUrl.bit_ly import Bitly
+from ShortUrl.bit_ly_v2 import Bitly
 
 class TestBitly(unittest.TestCase):
 
