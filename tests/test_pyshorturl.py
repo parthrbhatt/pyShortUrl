@@ -10,13 +10,13 @@ def run_test(class_to_test):
 
 if '__main__' == __name__:
     print '%70s' %'Testing Goo.gl API'
-    print '-'*70
+    print '='*70
     run_test(TestGoogl)
 
     print '%70s' %'Testing Bit.ly API'
-    print '-'*70
+    print '='*70
     run_test(TestBitly)
 
     print '%70s' %'Testing TinyUrl.com API'
-    print '-'*70
+    print '='*70
     run_test(TestTinyUrlcom)

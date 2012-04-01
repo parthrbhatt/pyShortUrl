@@ -6,7 +6,7 @@ import sys
 try:
     from ShortUrl.base_shortner import ShortnerServiceError
     from ShortUrl.goo_gl import Googl
-    from ShortUrl.bit_ly_v2 import Bitly
+    from ShortUrl.bit_ly import Bitly
     from ShortUrl.tinyurl_com import TinyUrlcom
     from ShortUrl.conf import SUPPORTED_SERVICES
 except ImportError:
@@ -19,6 +19,9 @@ if '__main__' == __name__:
     parser.add_option("-r", "--service", dest="service",
                       help="One of the shortening services %s. Defaults to goo.gl" \
                           %','.join((SUPPORTED_SERVICES)))
+
+    parser.add_option("-d", "--domain", dest="domain",
+                      help="Specify a domain to use while shortening with bit.ly")
 
     parser.add_option("-u", "--login", dest="login",
                       help="The user account to use with the url shortening service.")
@@ -33,7 +36,7 @@ if '__main__' == __name__:
                       help="Expand the specified Short URL.")
 
     parser.add_option("-q", "--qr-code-file", dest="qr_img_path",
-                      help="Used with -s. Writes the qr code for the corresponding short url.")
+                      help="Used with -s. Writes the QR code for the corresponding short url.")
 
     (options, args) = parser.parse_args()
 
@@ -79,7 +82,10 @@ if '__main__' == __name__:
     # Shorten a URL.
     if options.long_url:
         try:
-            short_url = service.shorten_url(options.long_url)
+            if 'bit.ly' == options.service and options.domain:
+                short_url = service.shorten_url(options.long_url, domain=options.domain)
+            else:
+                short_url = service.shorten_url(options.long_url)
             print short_url
         except ShortnerServiceError, e:
             print e

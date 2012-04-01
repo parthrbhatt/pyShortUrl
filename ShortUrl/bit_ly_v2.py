@@ -5,8 +5,8 @@ import urllib2
 
 from base_shortner import BaseShortner, ShortnerServiceError
 
-BITLY_SERVICE_URL = 'http://api.bit.ly/'
 BITLY_API_VERSION = '2.0.1'
+BITLY_SERVICE_URL = 'http://api.bit.ly/'
 
 class BitlyError(ShortnerServiceError):
     pass
