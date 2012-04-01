@@ -21,7 +21,7 @@ if '__main__' == __name__:
                           %','.join((SUPPORTED_SERVICES)))
 
     parser.add_option("-d", "--domain", dest="domain",
-                      help="Specify a domain to use while shortening with bit.ly")
+                      help="Domain bit.ly, j.mp or bitly.com to use while shortening with bit.ly. Defaults to bit.ly")
 
     parser.add_option("-u", "--login", dest="login",
                       help="The user account to use with the url shortening service.")

@@ -6,19 +6,23 @@ pyShortUrl
 A python library to shorten urls using one of the supported url shortening
 services.
 
-pyShortUrl currently supports shortening urls using:
+pyShortUrl supports shortening urls using:
   - goo.gl (Google's URL shortening service)
-  - bit.ly
+  - bit.ly, j.mp, bitly.com
   - tinyurl.com
 
 Following table explains what features are supported for which services:
 
   +--------------+----------------------+-----------+-------------+
-  | Service      |  Shorten/Expand URL  |  QR code  | Statestics  |
+  | Domain       |  Shorten/Expand URL  |  QR code  | Statestics  |
   +--------------+----------------------+-----------+-------------+
   | goo.gl       |        YES           |   YES     |    NO       |
   +--------------+----------------------+-----------+-------------+
   | bit.ly       |        YES           |   YES     |    NO       |
+  +--------------+----------------------+-----------+-------------+
+  | j.mp         |        YES           |   YES     |    NO       |
+  +--------------+----------------------+-----------+-------------+
+  | bitly.com    |        YES           |   YES     |    NO       |
   +--------------+----------------------+-----------+-------------+
   | tinyurl.com  |        YES           |   NO      |    NO       |
   +--------------+----------------------+-----------+-------------+
@@ -100,8 +104,8 @@ Get QR code for a goo.gl short url:
         print 'Error: %s' %e
 
 
-Using pyShortUrl for URL shortening with *bit.ly*
--------------------------------------------------
+Using pyShortUrl for URL shortening with *bit.ly*, *j.mp* and *bitly.com*
+-------------------------------------------------------------------------
 
 You can use bit.ly exactly like you'd use goo.gl. Just initialize the *service*
 object in the snippets above using *Bitly* instead of *Googl*.
@@ -117,6 +121,21 @@ Note that while *goo.gl* allows using its services without an API key, *bit.ly*
 does not. It is mandatory to associate every call to bit.ly with a valid
 account and an API Key. Hence, to use URL shortening with bit.ly you will need
 to provide an account name and API key.
+
+To shorten a url using *j.mp* or *bitly.com*, specify the domain as an argument
+to the `shorten` function call as shown below:
+
+::
+
+    from ShortUrl.bit_ly import Bitly, BitlyError
+
+    long_url = 'http://www.parthbhatt.com/blog/'
+    service = Bitly(<your_bit.ly_login>, <your_bit.ly_api_key>)
+    try:
+        short_url = service.shorten_url(long_url, domain='j.mp')
+        print short_url
+    except BitlyError, e:
+        print '%s' %e
 
 Using pyShortUrl for URL shortening with *tinyurl.com*
 ------------------------------------------------------
@@ -199,6 +218,13 @@ Shorten a long url using bit.ly:
 
     $ python pyshorturl-cli.py --service bit.ly --login <your_bit.ly_account> --api-key <your_bit.ly_api_key> -l http://www.parthbhatt.com/blog/
     http://bit.ly/xJHGkJ
+
+Shorten a long url using j.mp:
+
+::
+
+    $ python pyshorturl-cli.py --service bit.ly --login <your_bit.ly_account> --api-key <your_bit.ly_api_key> --domain j.mp -l http://www.parthbhatt.com/blog/
+    http://j.mp/xJHGkJ
 
 Obtain the original long url for a bit.ly short url:
 
