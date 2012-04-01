@@ -96,7 +96,7 @@ Get QR code for a goo.gl short url:
     from ShortUrl.goo_gl import Googl, GooglError
 
     short_url = 'http://goo.gl/RwsEG'
-    qr_img_path = 'qr_code.png'
+    qr_img_path = '/path/to/qr_code.png'
     service = Googl()
     try:
         service.write_qr_image(short_url, qr_img_path)
@@ -163,8 +163,11 @@ allows you to use all the features of the library from the command line.
     Options:
       -h, --help            show this help message and exit
       -r SERVICE, --service=SERVICE
-                            One of the shortening services goo.gl,bit.ly. Defaults
-                            to goo.gl
+                            One of the shortening services
+                            goo.gl,bit.ly,tinyurl.com. Defaults to goo.gl
+      -d DOMAIN, --domain=DOMAIN
+                            Domain bit.ly, j.mp or bitly.com to use while
+                            shortening with bit.ly. Defaults to bit.ly
       -u LOGIN, --login=LOGIN
                             The user account to use with the url shortening
                             service.
@@ -176,7 +179,7 @@ allows you to use all the features of the library from the command line.
       -s SHORT_URL, --short-url=SHORT_URL
                             Expand the specified Short URL.
       -q QR_IMG_PATH, --qr-code-file=QR_IMG_PATH
-                            Used with -s. Writes the qr code for the corresponding
+                            Used with -s. Writes the QR code for the corresponding
                             short url.
 
 
