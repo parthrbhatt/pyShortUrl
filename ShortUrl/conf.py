@@ -2,4 +2,4 @@
 from __init__ import __version__ as VERSION
 
 USER_AGENT_STRING = 'pyShortUrl v%s' %VERSION
-SUPPORTED_SERVICES = ('goo.gl', 'bit.ly', 'tinyurl.com')
+SUPPORTED_SERVICES = ('goo.gl', 'bit.ly', 'tinyurl.com', 'v.gd', 'is.gd')

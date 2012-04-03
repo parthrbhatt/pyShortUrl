@@ -1,8 +1,6 @@
 
 import json
 from urllib import urlencode
-import urllib2
-
 from base_shortner import BaseShortner, ShortnerServiceError
 
 BITLY_API_VERSION = '2.0.1'

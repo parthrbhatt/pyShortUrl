@@ -8,6 +8,8 @@ try:
     from ShortUrl.goo_gl import Googl
     from ShortUrl.bit_ly import Bitly
     from ShortUrl.tinyurl_com import TinyUrlcom
+    from ShortUrl.v_gd import Vgd
+    from ShortUrl.is_gd import Isgd
     from ShortUrl.conf import SUPPORTED_SERVICES
 except ImportError:
     print 'pyShortUrl is not installed.'
@@ -62,6 +64,10 @@ if '__main__' == __name__:
         service = Bitly(options.login, options.svc_api_key)
     elif 'tinyurl.com' == options.service:
         service = TinyUrlcom()
+    elif 'v.gd' == options.service:
+        service = Vgd()
+    elif 'is.gd' == options.service:
+        service = Isgd()
 
     # Get QR code.
     if options.qr_img_path:

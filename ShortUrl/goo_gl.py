@@ -1,9 +1,6 @@
 
 import json
-import urllib2
-
 from base_shortner import BaseShortner, ShortnerServiceError
-import conf
 
 GOOGL_SERVICE_URL = 'https://www.googleapis.com/urlshortener/v1/url'
 

@@ -10,11 +10,13 @@ pyShortUrl supports shortening urls using:
   - goo.gl (Google's URL shortening service)
   - bit.ly, j.mp, bitly.com
   - tinyurl.com
+  - v.gd
+  - is.gd
 
 Following table explains what features are supported for which services:
 
   +--------------+----------------------+-----------+-------------+
-  | Domain       |  Shorten/Expand URL  |  QR code  | Statestics  |
+  | Domain       |  Shorten/Expand URL  |  QR code  | Statistics  |
   +--------------+----------------------+-----------+-------------+
   | goo.gl       |        YES           |   YES     |    NO       |
   +--------------+----------------------+-----------+-------------+
@@ -25,6 +27,10 @@ Following table explains what features are supported for which services:
   | bitly.com    |        YES           |   YES     |    NO       |
   +--------------+----------------------+-----------+-------------+
   | tinyurl.com  |        YES           |   NO      |    NO       |
+  +--------------+----------------------+-----------+-------------+
+  | v.gd         |        YES           |   NO      |    NO       |
+  +--------------+----------------------+-----------+-------------+
+  | is.gd        |        YES           |   NO      |    NO       |
   +--------------+----------------------+-----------+-------------+
 
 
@@ -158,13 +164,12 @@ allows you to use all the features of the library from the command line.
 ::
 
     $ python pyshorturl-cli.py -h
-    Usage: pyshorturl-cli.py [options]
-
     Options:
       -h, --help            show this help message and exit
       -r SERVICE, --service=SERVICE
                             One of the shortening services
-                            goo.gl,bit.ly,tinyurl.com. Defaults to goo.gl
+                            goo.gl,bit.ly,tinyurl.com,v.gd,is.gd. Defaults to
+                            goo.gl
       -d DOMAIN, --domain=DOMAIN
                             Domain bit.ly, j.mp or bitly.com to use while
                             shortening with bit.ly. Defaults to bit.ly

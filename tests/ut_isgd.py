@@ -1,0 +1,31 @@
+
+import imghdr
+import os
+import sys
+import unittest
+import imghdr
+
+from ShortUrl.is_gd import Isgd
+
+class TestIsgd(unittest.TestCase):
+
+    def setUp(self):
+        self.test_long_url = 'http://www.parthbhatt.com/blog/'
+        self.test_short_url = 'http://is.gd/r6SpAN'
+
+    def test_shorten_url(self):
+        service = Isgd()
+        generated_short_url = service.shorten_url(self.test_long_url)
+
+        self.assertEqual(self.test_short_url, generated_short_url)
+
+    def test_expand_url(self):
+        service = Isgd()
+        generated_long_url = service.expand_url(self.test_short_url)
+
+        self.assertEqual(self.test_long_url, generated_long_url)
+
+
+if '__main__' == __name__:
+    suite = unittest.TestLoader().loadTestsFromTestCase(TestIsgd)
+    unittest.TextTestRunner(verbosity=2).run(suite)
