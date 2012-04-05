@@ -15,7 +15,7 @@ if '__main__' == __name__:
     print '='*70
     run_test(TestGoogl)
 
-    print '%70s' %'Testing Bit.ly API'
+    print '%70s' %'Testing Bit.ly (j.mp & bitly.com) API'
     print '='*70
     run_test(TestBitly)
 
