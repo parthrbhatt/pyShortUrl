@@ -17,6 +17,9 @@ setup(
     keywords = "url shortening qrcode qr goo.gl bit.ly tinyurl.com j.mp bitly.com v.gd is.gd",
     platforms = ['Linux', 'Max OS X', 'Windows', 'BSD', 'Unix'],
     url = "https://github.com/parthrbhatt/pyShortUrl",
+    data_files=[
+        ('.', ['README.rst']),
+      ],
     packages = ['pyshorturl', 'pyshorturl/ShortUrl'],
     long_description = read('README.rst'),
     classifiers = [
