@@ -48,8 +48,10 @@ class Vgd(BaseShortener):
 
         return error
 
-    def shorten_url(self, long_url):
+    def shorten_url(self, long_url, logstats=False):
         data = {'url': long_url}
+        if logstats:
+            data['logstats'] = 1
         request_url = self._get_request_url('create', data)
         response = self._do_http_request(request_url)
 

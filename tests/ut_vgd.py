@@ -22,6 +22,15 @@ class TestVgd(unittest.TestCase):
 
         self.assertEqual(self.test_short_url, generated_short_url)
 
+    def test_shorten_url_with_stats(self):
+        service = Vgd()
+        generated_short_url = service.shorten_url(self.test_long_url, logstats=True)
+
+        # When logstats is enabled, a new url will be generated for the long url
+        # so we cannot assertEqual(). Hence, we just check if we got a short url.
+        if not generated_short_url.startswith('http://v.gd/'):
+            raise AssertionError('Failed to generate short url with logstats enabled.')
+
     def test_expand_url(self):
         service = Vgd()
         generated_long_url = service.expand_url(self.test_short_url)
