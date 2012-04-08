@@ -13,11 +13,11 @@ from pyshorturl import Bitly, BitlyV2
 class TestBitly(unittest.TestCase):
 
     def setUp(self):
-        self.login = 'parthrbhatt'
-        self.api_key = 'R_0938930c0e3f357efce18f2cdaf53f60'
+        self.login = 'pyshorturl'
+        self.api_key = 'R_8a316454593adcec10cf5a56ac663e68'
         self.test_long_url = 'http://www.parthbhatt.com/blog/'
-        self.test_short_url = 'http://bit.ly/xJHGkJ'
-        self.test_short_url_hash = 'xJHGkJ'
+        self.test_short_url = 'http://bit.ly/HqeEe8'
+        self.test_short_url_hash = 'HqeEe8'
         self.qr_image_path = 'qr.png'
 
     def tearDown(self):

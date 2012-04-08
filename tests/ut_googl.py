@@ -14,7 +14,7 @@ class TestGoogl(unittest.TestCase):
     def setUp(self):
         self.test_long_url = 'http://www.parthbhatt.com/blog/'
         self.test_short_url = 'http://goo.gl/RwsEG'
-        self.api_key = 'AIzaSyC0KUGJe63CkvuG7jQfXV5PgI9U-x2IdAI'
+        self.api_key = 'AIzaSyBz_IC5f7AzeG82FyBYWmumO8jZAlXF5WU'
         self.qr_image_path = 'qr.png'
 
     def tearDown(self):
