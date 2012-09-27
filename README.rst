@@ -4,6 +4,8 @@ pyShortUrl
 ===========
 
 .. image::  https://secure.travis-ci.org/parthrbhatt/pyShortUrl.png
+   :alt: Current build status
+   :target: http://travis-ci.org/#!/parthrbhatt/pyShortUrl
 
 A python library to shorten urls using one of the supported url shortening
 services.
