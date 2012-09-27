@@ -4,5 +4,5 @@ python:
   - "2.6"
   - "2.7"
 # Command to run tests
-script:
-  - python tests/test_pyshorturl.py
+#script:
+#  - python tests/test_pyshorturl.py
