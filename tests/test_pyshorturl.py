@@ -5,6 +5,7 @@ from ut_bitly import TestBitly
 from ut_tinyurlcom import TestTinyUrlcom
 from ut_vgd import TestVgd
 from ut_isgd import TestIsgd
+from ut_gitio import TestGitio
 
 def run_test(class_to_test):
     suite = unittest.TestLoader().loadTestsFromTestCase(class_to_test)
@@ -18,6 +19,10 @@ if '__main__' == __name__:
     print '%70s' %'Testing Bit.ly (j.mp & bitly.com) API'
     print '='*70
     run_test(TestBitly)
+
+    print '%70s' %'Testing git.io API'
+    print '='*70
+    run_test(TestGitio)
 
     print '%70s' %'Testing TinyUrl.com API'
     print '='*70

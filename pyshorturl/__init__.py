@@ -33,6 +33,7 @@ from ShortUrl.bit_ly_v2 import Bitly as BitlyV2, BitlyError as BitlyV2Error
 from ShortUrl.goo_gl import Googl, GooglError
 from ShortUrl.is_gd import Isgd
 from ShortUrl.v_gd import Vgd, VgdError
+from ShortUrl.git_io import Gitio, GitioError
 from ShortUrl.tinyurl_com import TinyUrlcom, TinyUrlcomError
 
 from ShortUrl.base_shortener import BaseShortener, ShortenerServiceError

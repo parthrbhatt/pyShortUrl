@@ -10,11 +10,15 @@ class BaseShortener:
 
     def __init__(self, api_key):
         self.headers = {
-            'User-Agent': conf.USER_AGENT_STRING
+            'User-Agent': conf.USER_AGENT_STRING,
         }
         self.api_key = api_key
 
-    def _do_http_request(self, request_url, data=None):
+    def _do_http_request(self, request_url, data=None, headers=None):
+
+        if headers:
+            self.headers = dict(self.headers.items() + headers.items())
+
         if data:
             request = urllib2.Request(request_url, data=data, headers=self.headers)
         else:
@@ -22,8 +26,10 @@ class BaseShortener:
 
         try:
             connection = urllib2.urlopen(request)
-            response = connection.read()
-            return response
+            response_headers = connection.headers
+            response_body = connection.read()
+
+            return (response_headers, response_body)
         except urllib2.HTTPError, e:
             raise ShortenerServiceError('%s:%s' %(e.code, e.msg))
         except urllib2.URLError, e:

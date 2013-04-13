@@ -14,7 +14,7 @@ class TestVgd(unittest.TestCase):
 
     def setUp(self):
         self.test_long_url = 'http://www.parthbhatt.com/blog/'
-        self.test_short_url = 'http://v.gd/mfu3Ul'
+        self.test_short_url = 'http://v.gd/vUIV3O'
 
     def test_shorten_url(self):
         service = Vgd()

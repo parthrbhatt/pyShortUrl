@@ -4,7 +4,7 @@ import os
 import sys
 
 try:
-    from pyshorturl import Bitly, BitlyV2, Googl, Isgd, Vgd, TinyUrlcom, ShortenerServiceError
+    from pyshorturl import Bitly, BitlyV2, Gitio, Googl, Isgd, Vgd, TinyUrlcom, ShortenerServiceError
     from pyshorturl import SUPPORTED_SERVICES
 except ImportError:
     print 'pyShortUrl is not installed.'
@@ -57,6 +57,8 @@ if '__main__' == __name__:
             print 'bit.ly requires a valid account and API key.'
             sys.exit(-1)
         service = Bitly(options.login, options.svc_api_key)
+    if 'git.io' == options.service:
+        service = Gitio()
     elif 'tinyurl.com' == options.service:
         service = TinyUrlcom()
     elif 'v.gd' == options.service:

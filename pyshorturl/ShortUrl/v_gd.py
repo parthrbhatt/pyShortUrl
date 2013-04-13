@@ -53,7 +53,7 @@ class Vgd(BaseShortener):
         if logstats:
             data['logstats'] = 1
         request_url = self._get_request_url('create', data)
-        response = self._do_http_request(request_url)
+        headers, response = self._do_http_request(request_url)
 
         response = json.loads(response)
         short_url = response.get('shorturl')
@@ -66,7 +66,7 @@ class Vgd(BaseShortener):
     def expand_url(self, short_url):
         data = {'shorturl': short_url}
         request_url = self._get_request_url('forward', data)
-        response = self._do_http_request(request_url)
+        headers, response = self._do_http_request(request_url)
 
         response = json.loads(response)
         long_url = response.get('url')

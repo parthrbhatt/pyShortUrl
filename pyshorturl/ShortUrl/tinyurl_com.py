@@ -20,7 +20,7 @@ class TinyUrlcom(BaseShortener):
         data = {'url': long_url}
         data = urlencode(data)
         request_url = self._get_request_url()
-        response = self._do_http_request(request_url, data)
+        headers, response = self._do_http_request(request_url, data)
 
         if 'Error' == response:
             raise TinyUrlcomError('Received Error from tinyurl.com')

@@ -14,7 +14,7 @@ class TestIsgd(unittest.TestCase):
 
     def setUp(self):
         self.test_long_url = 'http://www.parthbhatt.com/blog/'
-        self.test_short_url = 'http://is.gd/r6SpAN'
+        self.test_short_url = 'http://is.gd/SBUGur'
 
     def test_shorten_url(self):
         service = Isgd()

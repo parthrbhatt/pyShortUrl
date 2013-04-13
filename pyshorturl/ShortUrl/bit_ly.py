@@ -74,7 +74,7 @@ class Bitly(BaseShortener):
         }
 
         request_url = self._get_request_url('shorten', params)
-        response = self._do_http_request(request_url)
+        headers, response = self._do_http_request(request_url)
         response = json.loads(response)
 
         if not self._is_response_success(response):
@@ -97,7 +97,7 @@ class Bitly(BaseShortener):
         }
 
         request_url = self._get_request_url('expand', params)
-        response = self._do_http_request(request_url)
+        headers, response = self._do_http_request(request_url)
         response = json.loads(response)
 
         if not self._is_response_success(response):
@@ -124,7 +124,7 @@ class Bitly(BaseShortener):
         }
 
         request_url = self._get_request_url('validate', params)
-        response = self._do_http_request(request_url)
+        headers, response = self._do_http_request(request_url)
         response = json.loads(response)
 
         if not self._is_response_success(response):
@@ -136,7 +136,7 @@ class Bitly(BaseShortener):
 
     def get_qr_code(self, short_url):
         qr_url = short_url + '.qrcode'
-        response = self._do_http_request(qr_url)
+        headers, response = self._do_http_request(qr_url)
 
         return response
 

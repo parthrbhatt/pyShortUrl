@@ -35,7 +35,7 @@ class Googl(BaseShortener):
         data = """{"longUrl": "%s"}""" %long_url
 
         request_url = self._get_request_url()
-        response = self._do_http_request(request_url, data)
+        headers, response = self._do_http_request(request_url, data)
 
         response = json.loads(response)
         return response.get('id')
@@ -44,7 +44,7 @@ class Googl(BaseShortener):
         url_params = {'shortUrl':short_url}
         request_url = self._get_request_url(url_params)
 
-        response = self._do_http_request(request_url)
+        headers, response = self._do_http_request(request_url)
         response = json.loads(response)
 
         status = response.get('status')
@@ -57,7 +57,7 @@ class Googl(BaseShortener):
 
     def get_qr_code(self, short_url):
         qr_url = short_url + '.qr'
-        response = self._do_http_request(qr_url)
+        headers, response = self._do_http_request(qr_url)
 
         return response
 
