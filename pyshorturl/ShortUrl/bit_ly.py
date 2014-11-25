@@ -134,9 +134,4 @@ class Bitly(BaseShortener):
         data = response.get('data')
         return data.get('valid')
 
-    def get_qr_code(self, short_url):
-        qr_url = short_url + '.qrcode'
-        headers, response = self._do_http_request(qr_url)
-
-        return response
 

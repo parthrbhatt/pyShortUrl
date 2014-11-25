@@ -69,11 +69,6 @@ class Bitly(BaseShortener):
         results_dict = response.get('results')
         return results_dict.values()[0].get('longUrl')
 
-    def get_qr_code(self, short_url):
-        qr_url = short_url + '.qrcode'
-        headers, response = self._do_http_request(qr_url)
-
-        return response
 
     def get_short_url_info(self, short_url):
         request_url = self._get_request_url('info', 'shortUrl', short_url)

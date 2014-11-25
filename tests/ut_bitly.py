@@ -18,11 +18,9 @@ class TestBitly(unittest.TestCase):
         self.test_long_url = 'http://www.parthbhatt.com/blog/'
         self.test_short_url = 'http://bit.ly/HqeEe8'
         self.test_short_url_hash = 'HqeEe8'
-        self.qr_image_path = 'qr.png'
 
     def tearDown(self):
-        if os.path.exists(self.qr_image_path):
-            os.unlink(self.qr_image_path)
+        pass
 
     def test_shorten_url(self):
         service = Bitly(login=self.login, api_key=self.api_key)
@@ -44,12 +42,6 @@ class TestBitly(unittest.TestCase):
 
         self.assertEqual(self.test_long_url, generated_long_url)
 
-    def test_write_qr_image(self):
-        service = Bitly(login=self.login, api_key=self.api_key)
-        service.write_qr_image(self.test_short_url, self.qr_image_path)
-
-        self.assertEqual('png', imghdr.what(self.qr_image_path))
-
     def test_validate(self):
         service = Bitly(login=self.login, api_key=self.api_key)
         result = service.validate()
@@ -70,11 +62,6 @@ class TestBitly(unittest.TestCase):
 
         self.assertEqual(self.test_long_url, generated_long_url)
 
-    def test_write_qr_image_v2(self):
-        service = Bitly(login=self.login, api_key=self.api_key)
-        service.write_qr_image(self.test_short_url, self.qr_image_path)
-
-        self.assertEqual('png', imghdr.what(self.qr_image_path))
 
 
 if '__main__' == __name__:
