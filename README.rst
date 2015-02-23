@@ -7,20 +7,12 @@ pyShortUrl
    :alt: Current build status
    :target: http://travis-ci.org/#!/parthrbhatt/pyShortUrl
 
-A python library to shorten urls using one of the supported url shortening
-services.
+A python library to shorten urls using various url shortening serices.
 
-pyShortUrl supports shortening urls using:
-  - goo.gl (Google's URL shortening service)
-  - bit.ly, j.mp, bitly.com
-  - tinyurl.com
-  - v.gd
-  - is.gd
-
-Following table explains what features are supported for which services:
+Following table lists details for each of the supported services:
 
   +--------------+----------------------+-----------+-------------+
-  | Domain       |  Shorten/Expand URL  |  QR code  | Statistics  |
+  | Domain       |  Shorten/Expand URLs |  QR code  | Statistics  |
   +--------------+----------------------+-----------+-------------+
   | goo.gl       |        YES           |   YES     |    NO       |
   +--------------+----------------------+-----------+-------------+
