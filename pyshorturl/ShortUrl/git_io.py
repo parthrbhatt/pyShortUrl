@@ -2,7 +2,7 @@
 import random
 from base_shortener import BaseShortener, ShortenerServiceError
 
-GITIO_SERVICE_URL = 'http://git.io'
+GITIO_SERVICE_URL = 'https://git.io'
 
 class GitioError(ShortenerServiceError):
     pass

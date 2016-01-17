@@ -27,11 +27,13 @@ class TestGoogl(unittest.TestCase):
 
         self.assertEqual(self.test_short_url, generated_short_url)
 
+    '''
     def test_shorten_url_without_key(self):
         service = Googl()
         generated_short_url = service.shorten_url(self.test_long_url)
 
         self.assertEqual(self.test_short_url, generated_short_url)
+    '''
 
     def test_write_qr_image(self):
         service = Googl()
@@ -45,11 +47,13 @@ class TestGoogl(unittest.TestCase):
 
         self.assertEqual(self.test_long_url, generated_long_url)
 
+    '''
     def test_expand_url_without_key(self):
         service = Googl()
         generated_long_url = service.expand_url(self.test_short_url)
 
         self.assertEqual(self.test_long_url, generated_long_url)
+    '''
 
 
 if '__main__' == __name__:

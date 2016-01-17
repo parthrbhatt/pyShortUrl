@@ -12,7 +12,7 @@ class TestGitio(unittest.TestCase):
 
     def setUp(self):
         self.test_long_url = 'https://github.com/blog/985-git-io-github-url-shortener'
-        self.test_short_url = 'http://git.io/PUikkQ' # self.test_long_url shortens to this.
+        self.test_short_url = 'https://git.io/PUikkQ' # self.test_long_url shortens to this.
 
     def test_shorten_url(self):
         service = Gitio()
