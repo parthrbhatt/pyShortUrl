@@ -58,7 +58,7 @@ Shorten a URL using goo.gl:
     from pyshorturl import Googl, GooglError
 
     long_url = 'http://www.parthbhatt.com/blog/'
-    service = Googl()
+    service = Googl(api_key=<your_api_key>)
     try:
         short_url = service.shorten_url(long_url)
         print short_url
@@ -73,24 +73,13 @@ Expand a goo.gl short url back to the original long url:
     from pyshorturl import Googl, GooglError
 
     short_url = 'http://goo.gl/RwsEG'
-    service = Googl()
+    service = Googl(api_key=<your_api_key>)
     try:
         long_url = service.expand_url(short_url)
         print long_url
     except GooglError, e:
         print 'Error: %s' %e
 
-
-Note that while it is possible to shorten a url or expand a goo.gl short url
-without an api key, the API reference document explicitly states that using an
-API key is *highly recommended*.
-
-To use an API Key, provide an optional argument while instantiating `Googl()`
-object as follows:
-
-::
-
-    service = Googl(api_key=<your_api_key>)
 
 
 Get QR code for a goo.gl short url:
@@ -121,8 +110,7 @@ object in the snippets above using *Bitly* instead of *Googl*.
     service = Bitly(<your_bit.ly_login>, <your_bit.ly_api_key>)
 
 
-Note that while *goo.gl* allows using its services without an API key, *bit.ly*
-does not. It is mandatory to associate every call to bit.ly with a valid
+Note that it is mandatory to associate every call to bit.ly with a valid
 account and an API Key. Hence, to use URL shortening with bit.ly you will need
 to provide an account name and API key.
 
@@ -192,19 +180,10 @@ Shorten a long url using goo.gl:
 
 ::
 
-    $ python pyshorturl-cli.py --long-url http://www.parthbhatt.com/blog/2011/geolocation-with-google-maps-javascript-api/
+    $ python pyshorturl-cli.py --service goo.gl --long-url http://www.parthbhatt.com/blog/2011/geolocation-with-google-maps-javascript-api/ --api-key <your-api-key>
     http://goo.gl/NMdyG
 
 Obtain the original long url for a goo.gl short url:
-
-::
-
-    $ python pyshorturl-cli.py --short-url http://goo.gl/NMdyG
-    http://www.parthbhatt.com/blog/2011/geolocation-with-google-maps-javascript-api/
-
-Optionally, provide an api key obtained from goo.gl while shortening a url or
-expanding a short url. Following example shows you how you can provide an api
-key while expanding a short url:
 
 ::
 
@@ -260,3 +239,19 @@ Obtain the original long url for a tinyurl.com short url:
 
     $ python pyshorturl-cli.py --service tinyurl.com --short-url http://tinyurl.com/8yuvzl5
     http://www.parthbhatt.com/blog/
+
+
+Shorten a long url using git.io:
+
+::
+
+    $ python pyshorturl-cli.py --service git.io --long-url https://github.com/parthrbhatt/pyShortUrl
+    https://git.io/sUX2IQ
+
+Retrieve the original long url with git.io:
+
+::
+
+    $ python pyshorturl-cli.py --service git.io --short-url https://git.io/sUX2IQ
+    https://github.com/parthrbhatt/pyShortUrl
+
